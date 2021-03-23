@@ -16,6 +16,7 @@
   ],
   "require": {
     "php": ">=8.0",
+    "lib-pcre": "*",
     "illuminate/support": "^8.0"
   },
   "require-dev": {
