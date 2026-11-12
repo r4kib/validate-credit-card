@@ -9,3 +9,4 @@ storage/
 .env.example
 .scrutinizer.yml
 .travis.yml
+.phpunit.result.cache
