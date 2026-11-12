@@ -63,7 +63,7 @@ class CreditCardTest extends TestCase
         ),
     );
 
-    public function testCardsTypes()
+    public function testCardsTypes(): void
     {
         foreach ($this->validCards as $type => $numbers) {
             foreach ($numbers as $number) {
@@ -75,7 +75,7 @@ class CreditCardTest extends TestCase
         }
     }
 
-    public function testNumbers()
+    public function testNumbers(): void
     {
         // Empty number
         $result = CreditCard::validCreditCard('');
@@ -106,13 +106,13 @@ class CreditCardTest extends TestCase
         $this->assertEquals(false, $result['valid']);
     }
 
-    public function testLuhn()
+    public function testLuhn(): void
     {
         $result = CreditCard::validCreditCard('4242424242424241');
         $this->assertEquals(false, $result['valid']);
     }
 
-    public function testDate()
+    public function testDate(): void
     {
         // Invalid month
         $this->assertEquals(false, CreditCard::validDate(date('Y'), '13'));
@@ -142,7 +142,7 @@ class CreditCardTest extends TestCase
         $this->assertEquals(true, CreditCard::validDate(date('Y', $timestamp), date('m', $timestamp)));
     }
 
-    public function testCvc()
+    public function testCvc(): void
     {
         // Empty
         $this->assertEquals(false, CreditCard::validCvc('', ''));
@@ -155,6 +155,8 @@ class CreditCardTest extends TestCase
 
         // Valid
         $this->assertEquals(true, CreditCard::validCvc('123', 'visa'));
+
+        $this->assertTrue(CreditCard::validCvc(123, 'visa'));
 
         // Non digits
         $this->assertEquals(false, CreditCard::validCvc('12e', 'visa'));
